@@ -1,1 +1,94 @@
-[]
+[
+  {
+    "company": "Atlas Logistics",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Harbor Shipping Co",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "acquisition",
+        "pct": null,
+        "former_parent": "Redwood Media Group"
+      },
+      {
+        "company": "Pioneer Software Inc",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "stake",
+        "pct": "60",
+        "former_parent": null
+      }
+    ]
+  },
+  {
+    "company": "Meridian Insurance Co",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Helios Energy PLC",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "subsidiary",
+        "pct": null,
+        "former_parent": null
+      }
+    ]
+  },
+  {
+    "company": "Quantum Retail Group",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Lotus Foods Ltd",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "subsidiary",
+        "pct": null,
+        "former_parent": null
+      }
+    ]
+  },
+  {
+    "company": "Evergreen Agro Ltd",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Summit Cement Ltd",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "subsidiary",
+        "pct": null,
+        "former_parent": null
+      }
+    ]
+  },
+  {
+    "company": "Zenith Motors",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Orion Steel Corp",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "acquisition",
+        "pct": null,
+        "former_parent": "Titan Chemicals Corp"
+      }
+    ]
+  },
+  {
+    "company": "Bluewave Telecom",
+    "is_root": true,
+    "subsidiaries": [
+      {
+        "company": "Crescent Textiles",
+        "is_root": false,
+        "subsidiaries": [],
+        "relation": "acquisition",
+        "pct": null,
+        "former_parent": null
+      }
+    ]
+  }
+]

@@ -1,66 +1,286 @@
 [
   {
+    "event_type": "ACQUISITION",
+    "event_subtype": "Definitive Acquisition Agreement",
+    "acquirer": "Zenith Motors",
+    "target": "Orion Steel",
+    "seller": null,
+    "buyer": null,
+    "companies": [
+      "Zenith Motors",
+      "Orion Steel"
+    ],
+    "people": [],
+    "deal_value": "$2.1 billion",
+    "deal_structure": "Equity Purchase Agreement",
+    "event_date": "14 March 2026",
+    "effective_timeline": "Pending Closing Conditions",
+    "status": "Announced",
+    "strategic_rationale": null,
+    "event_brief": "Zenith Motors agreed to acquire Orion Steel valued at $2.1 billion on 14 March 2026.",
+    "key_highlights": [
+      "Transaction Scope: Zenith Motors acquiring Orion Steel",
+      "Financial Consideration: $2.1 billion (Equity Purchase Agreement)",
+      "Timeline Status: Announced | Date: 14 March 2026"
+    ],
+    "significance": "HIGH",
+    "summary": "Zenith Motors agreed to acquire Orion Steel valued at $2.1 billion on 14 March 2026.",
+    "title": "Zenith Motors to acquire Orion Steel for $2.1 billion",
+    "source": "Demo News",
+    "url": "https://demo.example/article-1",
+    "confidence": 0.911,
+    "raw_text_snippet": "Zenith Motors Ltd has agreed to acquire Orion Steel Corp in a deal valued at $2.1 billion, the companies said on 14 March 2026. Orion Steel Corp, a subsidiary of Titan Chemicals Corp, makes specialty alloys for the automotive industry. Zenith Motors said the acquisition will secure its supply chain. Titan Chemicals Corp's subsidiary Orion Steel employs about 9,000 people."
+  },
+  {
+    "event_type": "MERGER",
+    "event_subtype": "All-Stock Strategic Merger",
+    "acquirer": "Apex Pharma",
+    "target": "Helios Energy",
+    "seller": null,
+    "buyer": null,
+    "companies": [
+      "Apex Pharma",
+      "Helios Energy"
+    ],
+    "people": [],
+    "deal_value": "$7.8 billion",
+    "deal_structure": "All-Stock Transaction",
+    "event_date": "2 April 2026",
+    "effective_timeline": "Pending Closing Conditions",
+    "status": "Announced",
+    "strategic_rationale": "Helios Energy PLC, a wholly-owned subsidiary of Meridian Insurance Co, will become part of the combined entity.",
+    "event_brief": "Apex Pharma and Helios Energy have entered into a definitive merger agreement valued at $7.8 billion to combine operations. Helios Energy PLC, a wholly-owned subsidiary of Meridian Insurance Co, will become part of the combined entity. The transaction was approved by leadership on 2 April 2026.",
+    "key_highlights": [
+      "Merger Partners: Apex Pharma & Helios Energy",
+      "Financial Consideration: $7.8 billion (All-Stock Transaction)",
+      "Timeline Status: Announced | Date: 2 April 2026",
+      "Strategic Rationale: Helios Energy PLC, a wholly-owned subsidiary of Meridian Insurance Co, will become part of the combined entity."
+    ],
+    "significance": "HIGH",
+    "summary": "Apex Pharma and Helios Energy have entered into a definitive merger agreement valued at $7.8 billion to combine operations. Helios Energy PLC, a wholly-owned subsidiary of Meridian Insurance Co, will become part of the combined entity. The transaction was approved by leadership on 2 April 2026.",
+    "title": "Apex Pharma and Helios Energy to merge",
+    "source": "Demo News",
+    "url": "https://demo.example/article-2",
+    "confidence": 0.787,
+    "raw_text_snippet": "Apex Pharma Inc and Helios Energy PLC have agreed to merge in an all-stock transaction worth $7.8 billion. The merger of Apex Pharma and Helios Energy was approved by both boards on 2 April 2026. Helios Energy PLC, a wholly-owned subsidiary of Meridian Insurance Co, will become part of the combined entity."
+  },
+  {
+    "event_type": "DIVESTITURE",
+    "event_subtype": "Subsidiary Unit Divestiture",
+    "acquirer": null,
+    "target": "Lotus Foods",
+    "seller": "Quantum Retail",
+    "buyer": "Evergreen Agro Ltd",
+    "companies": [
+      "Quantum Retail",
+      "Lotus Foods",
+      "Evergreen Agro Ltd"
+    ],
+    "people": [],
+    "deal_value": "Rs 3,500 crore",
+    "deal_structure": "Asset Carve-out / Divestiture",
+    "event_date": "June 2026",
+    "effective_timeline": "close in June 2026",
+    "status": "Pending Closing",
+    "strategic_rationale": "Quantum Retail Group will sell its Lotus Foods unit to Evergreen Agro Ltd for Rs 3,500 crore, as it exits non-core businesses.",
+    "event_brief": "Quantum Retail agreed to sell its Lotus Foods unit to Evergreen Agro Ltd valued at Rs 3,500 crore on June 2026. Quantum Retail Group will sell its Lotus Foods unit to Evergreen Agro Ltd for Rs 3,500 crore, as it exits non-core businesses. Transaction expected to close in June 2026.",
+    "key_highlights": [
+      "Divestment: Quantum Retail selling Lotus Foods ➔ Buyer: Evergreen Agro Ltd",
+      "Financial Consideration: Rs 3,500 crore (Asset Carve-out / Divestiture)",
+      "Timeline Status: Pending Closing | Date: June 2026",
+      "Strategic Rationale: Quantum Retail Group will sell its Lotus Foods unit to Evergreen Agro Ltd for Rs 3,500 crore, as it exits non-core businesses."
+    ],
+    "significance": "MEDIUM",
+    "summary": "Quantum Retail agreed to sell its Lotus Foods unit to Evergreen Agro Ltd valued at Rs 3,500 crore on June 2026. Quantum Retail Group will sell its Lotus Foods unit to Evergreen Agro Ltd for Rs 3,500 crore, as it exits non-core businesses. Transaction expected to close in June 2026.",
+    "title": "Quantum Retail to sell its Lotus Foods unit for Rs 3,500 crore",
+    "source": "Demo News",
+    "url": "https://demo.example/article-3",
+    "confidence": 0.843,
+    "raw_text_snippet": "Quantum Retail Group will sell its Lotus Foods unit to Evergreen Agro Ltd for Rs 3,500 crore, as it exits non-core businesses. Quantum Retail Group said the sale will close in June 2026. Lotus Foods Ltd, a subsidiary of Quantum Retail Group, runs 120 stores."
+  },
+  {
+    "event_type": "HOSTILE_TAKEOVER",
+    "event_subtype": "Hostile Takeover Defense (Poison Pill)",
+    "acquirer": "Bluewave Telecom",
+    "target": "Crescent Textiles",
+    "seller": null,
+    "buyer": null,
+    "companies": [
+      "Bluewave Telecom",
+      "Crescent Textiles"
+    ],
+    "people": [],
+    "deal_value": "$450 million",
+    "deal_structure": "Contested Tender Offer",
+    "event_date": "20 May 2026",
+    "effective_timeline": "Pending Closing Conditions",
+    "status": "Contested / Hostile",
+    "strategic_rationale": "The board of Crescent Textiles has adopted a poison pill to fend off the bid.",
+    "event_brief": "Bluewave Telecom launched an unsolicited hostile takeover bid for Crescent Textiles valued at $450 million. The board of Crescent Textiles has mounted defensive measures (including a poison pill) to fend off the takeover approach.",
+    "key_highlights": [
+      "Hostile Bid: Bluewave Telecom targeting Crescent Textiles (Defenses Deployed)",
+      "Financial Consideration: $450 million (Contested Tender Offer)",
+      "Timeline Status: Contested / Hostile | Date: 20 May 2026",
+      "Strategic Rationale: The board of Crescent Textiles has adopted a poison pill to fend off the bid."
+    ],
+    "significance": "HIGH",
+    "summary": "Bluewave Telecom launched an unsolicited hostile takeover bid for Crescent Textiles valued at $450 million. The board of Crescent Textiles has mounted defensive measures (including a poison pill) to fend off the takeover approach.",
+    "title": "Bluewave Telecom launches hostile takeover bid for Crescent Textiles",
+    "source": "Demo News",
+    "url": "https://demo.example/article-4",
+    "confidence": 0.958,
+    "raw_text_snippet": "Bluewave Telecom Ltd launches hostile takeover bid for Crescent Textiles Ltd with an unsolicited $450 million offer. The board of Crescent Textiles has adopted a poison pill to fend off the bid. Shareholders will decide on 20 May 2026."
+  },
+  {
     "event_type": "EXECUTIVE_CHANGE",
+    "event_subtype": "Executive Leadership Appointment",
     "acquirer": null,
     "target": null,
     "seller": null,
     "buyer": null,
-    "companies": [],
-    "people": [],
+    "companies": [
+      "Falcon Airlines"
+    ],
+    "people": [
+      {
+        "name": "Priya Nair",
+        "role": "CEO",
+        "company": "Falcon Airlines",
+        "change": "appointed"
+      },
+      {
+        "name": "Rahul Mehta",
+        "role": "CEO",
+        "company": "Falcon Airlines",
+        "change": "departed"
+      }
+    ],
     "deal_value": null,
-    "event_date": "February 2025",
-    "summary": "Who is Harish Bhat?",
-    "title": "Who is Harish Bhat? Why the Tata veteran resigned from Trent's board and what he told Noel Tata",
-    "source": "Livemint Companies",
-    "url": "https://www.livemint.com/companies/people/who-is-harish-bhat-why-the-tata-veteran-resigned-from-trents-board-and-what-he-told-noel-tata-11792500019973.html",
-    "confidence": 0.487
+    "deal_structure": "Equity Purchase Agreement",
+    "event_date": "5 June 2026",
+    "effective_timeline": "with immediate effect",
+    "status": "Announced",
+    "strategic_rationale": null,
+    "event_brief": "Falcon Airlines announced executive leadership transitions: Priya Nair has been appointed as CEO; Rahul Mehta stepped down from the role of CEO (on 5 June 2026).",
+    "key_highlights": [
+      "Leadership Movement: Priya Nair (appointed CEO), Rahul Mehta (departed CEO)",
+      "Deal Structure: Equity Purchase Agreement",
+      "Timeline Status: Announced | Date: 5 June 2026"
+    ],
+    "significance": "MEDIUM",
+    "summary": "Falcon Airlines announced executive leadership transitions: Priya Nair has been appointed as CEO; Rahul Mehta stepped down from the role of CEO (on 5 June 2026).",
+    "title": "Falcon Airlines appoints Priya Nair as new CEO",
+    "source": "Demo News",
+    "url": "https://demo.example/article-5",
+    "confidence": 0.96,
+    "raw_text_snippet": "Falcon Airlines appoints Priya Nair as new Chief Executive Officer with immediate effect. Rahul Mehta resigns as CEO of Falcon Airlines after seven years. The change was announced on 5 June 2026."
   },
   {
     "event_type": "IPO",
+    "event_subtype": "Draft Red Herring Prospectus (DRHP) Filing",
     "acquirer": null,
-    "target": null,
+    "target": "Nimbus Cloud",
     "seller": null,
     "buyer": null,
-    "companies": [],
+    "companies": [
+      "Nimbus Cloud"
+    ],
     "people": [],
-    "deal_value": null,
-    "event_date": "Tue, 20 Oct 2026 19:26:48 +0530",
-    "summary": "Akash Ambani: from building Jio to selling its story.",
-    "title": "Akash Ambani: from building Jio to selling its story",
-    "source": "Livemint Companies",
-    "url": "https://www.livemint.com/companies/akash-ambani-from-building-jio-to-selling-its-story-11792500314399.html",
-    "confidence": 0.395
+    "deal_value": "$1.2 billion",
+    "deal_structure": "Primary Public Offering",
+    "event_date": "2026",
+    "effective_timeline": "later this year",
+    "status": "Pending Closing",
+    "strategic_rationale": "Nimbus Cloud files draft papers for IPO to raise $1.2 billion.",
+    "event_brief": "Nimbus Cloud filed regulatory draft papers for an Initial Public Offering (IPO) to raise $1.2 billion. The public listing will allow public market investors to participate in the company's equity.",
+    "key_highlights": [
+      "Public Issue: Nimbus Cloud Draft Filing",
+      "Financial Consideration: $1.2 billion (Primary Public Offering)",
+      "Timeline Status: Pending Closing | Date: 2026",
+      "Strategic Rationale: Nimbus Cloud files draft papers for IPO to raise $1.2 billion."
+    ],
+    "significance": "MEDIUM",
+    "summary": "Nimbus Cloud filed regulatory draft papers for an Initial Public Offering (IPO) to raise $1.2 billion. The public listing will allow public market investors to participate in the company's equity.",
+    "title": "Nimbus Cloud files draft papers for IPO to raise $1.2 billion",
+    "source": "Demo News",
+    "url": "https://demo.example/article-6",
+    "confidence": 0.908,
+    "raw_text_snippet": "Nimbus Cloud Inc files draft papers with the regulator for an IPO to raise $1.2 billion. The cloud company plans to list its shares later this year."
+  },
+  {
+    "event_type": "ACQUISITION",
+    "event_subtype": "Completed Acquisition",
+    "acquirer": "Atlas Logistics",
+    "target": "Harbor Shipping",
+    "seller": null,
+    "buyer": null,
+    "companies": [
+      "Atlas Logistics",
+      "Harbor Shipping"
+    ],
+    "people": [],
+    "deal_value": "$95 million",
+    "deal_structure": "Equity Purchase Agreement",
+    "event_date": "11 July 2026",
+    "effective_timeline": "Pending Closing Conditions",
+    "status": "Completed",
+    "strategic_rationale": null,
+    "event_brief": "Atlas Logistics agreed to acquire Harbor Shipping valued at $95 million on 11 July 2026.",
+    "key_highlights": [
+      "Transaction Scope: Atlas Logistics acquiring Harbor Shipping",
+      "Financial Consideration: $95 million (Equity Purchase Agreement)",
+      "Timeline Status: Completed | Date: 11 July 2026"
+    ],
+    "significance": "HIGH",
+    "summary": "Atlas Logistics agreed to acquire Harbor Shipping valued at $95 million on 11 July 2026.",
+    "title": "Atlas Logistics completes acquisition of Harbor Shipping",
+    "source": "Demo News",
+    "url": "https://demo.example/article-9",
+    "confidence": 0.786,
+    "raw_text_snippet": "Atlas Logistics Ltd completes acquisition of Harbor Shipping Co for $95 million, the company said on 11 July 2026. Atlas Logistics holds a 60% stake in Pioneer Software Inc. Harbor Shipping Co, owned by Redwood Media Group, was a long-time rival."
   },
   {
     "event_type": "EXECUTIVE_CHANGE",
+    "event_subtype": "Executive Leadership Appointment",
     "acquirer": null,
     "target": null,
     "seller": null,
     "buyer": null,
-    "companies": [],
-    "people": [],
+    "companies": [
+      "Sunrise Hospitals"
+    ],
+    "people": [
+      {
+        "name": "Meera Iyer",
+        "role": "Chairperson",
+        "company": "Sunrise Hospitals",
+        "change": "appointed"
+      },
+      {
+        "name": "Arjun Kapoor",
+        "role": "Managing Director",
+        "company": "Sunrise Hospitals Ltd",
+        "change": "departed"
+      }
+    ],
     "deal_value": null,
-    "event_date": "June 9, 2026",
-    "summary": "Schaeffler India CEO Harsha Gopal Kadam taken into custody over factory accident that killed 2 workers.",
-    "title": "Schaeffler India CEO Harsha Gopal Kadam taken into custody over factory accident that killed 2 workers",
-    "source": "Livemint Companies",
-    "url": "https://www.livemint.com/companies/people/schaeffler-india-ceo-harsha-gopal-kadam-taken-into-custody-over-factory-accident-that-killed-2-workers-11792503983919.html",
-    "confidence": 0.335
-  },
-  {
-    "event_type": "EXECUTIVE_CHANGE",
-    "acquirer": null,
-    "target": null,
-    "seller": null,
-    "buyer": null,
-    "companies": [],
-    "people": [],
-    "deal_value": "$80 billion",
-    "event_date": "April 27, 1955",
-    "summary": "Who is Eric Schmidt?",
-    "title": "Who is Eric Schmidt? Meet ex-Google CEO whose 1% Anthropic stake could push his fortune close to $80 billion",
-    "source": "Livemint Companies",
-    "url": "https://www.livemint.com/companies/people/who-is-eric-schmidt-meet-ex-google-ceo-whose-1-anthropic-stake-could-push-his-fortune-close-to-80-billion-11792498111347.html",
-    "confidence": 0.25
+    "deal_structure": "Equity Purchase Agreement",
+    "event_date": "2026",
+    "effective_timeline": "Pending Closing Conditions",
+    "status": "Announced",
+    "strategic_rationale": null,
+    "event_brief": "Sunrise Hospitals announced executive leadership transitions: Meera Iyer has been appointed as Chairperson; Arjun Kapoor stepped down from the role of Managing Director (on 2026).",
+    "key_highlights": [
+      "Leadership Movement: Meera Iyer (appointed Chairperson), Arjun Kapoor (departed Managing Director)",
+      "Deal Structure: Equity Purchase Agreement",
+      "Timeline Status: Announced | Date: 2026"
+    ],
+    "significance": "MEDIUM",
+    "summary": "Sunrise Hospitals announced executive leadership transitions: Meera Iyer has been appointed as Chairperson; Arjun Kapoor stepped down from the role of Managing Director (on 2026).",
+    "title": "Sunrise Hospitals names Meera Iyer Chairperson",
+    "source": "Demo News",
+    "url": "https://demo.example/article-10",
+    "confidence": 0.923,
+    "raw_text_snippet": "Sunrise Hospitals Ltd names Meera Iyer Chairperson after the retirement of the previous chair. Arjun Kapoor steps down as Managing Director of Sunrise Hospitals Ltd."
   }
 ]

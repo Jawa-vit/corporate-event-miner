@@ -1,1 +1,18 @@
-(no parent/subsidiary relations found)
+Atlas Logistics
+├── Harbor Shipping Co  [acquisition; formerly under Redwood Media Group]
+└── Pioneer Software Inc  [60% stake]
+
+Meridian Insurance Co
+└── Helios Energy PLC  [subsidiary]
+
+Quantum Retail Group
+└── Lotus Foods Ltd  [subsidiary]
+
+Evergreen Agro Ltd
+└── Summit Cement Ltd  [subsidiary]
+
+Zenith Motors
+└── Orion Steel Corp  [acquisition; formerly under Titan Chemicals Corp]
+
+Bluewave Telecom
+└── Crescent Textiles  [acquisition]

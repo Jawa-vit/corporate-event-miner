@@ -1,10 +1,16 @@
 """
-Task (d): Create a tree of a Company and its subsidiaries.
+Task (d): Create a visually stunning tree of a Company and its subsidiaries.
 
-Relationships are mined from article text with patterns such as
-  "X, a subsidiary of Y"  |  "Y's subsidiary X"  |  "X, owned by Y"
-  "Y holds a 60% stake in X"  |  "Y acquired X" (acquirer becomes the parent)
-and stored in a directed graph (parent -> child) built with networkx.
+Relationships are mined from article text with patterns such as:
+  - "X, a subsidiary of Y"  |  "Y's subsidiary X"  |  "X, owned by Y"
+  - "Y holds a 60% stake in X"
+  - "Y acquired X" (acquirer becomes the new parent, with provenance tracking)
+
+Renders:
+  1. High-Resolution Visual Diagram (output/company_tree.png) with executive dark-slate styling,
+     rounded card badges, distinct entity colors, and legible edge annotations.
+  2. Hierarchical Text representation (Unicode / ASCII fallback).
+  3. Structured nested JSON hierarchy.
 """
 import json
 import re
@@ -45,15 +51,15 @@ class CompanyGraph:
         if not parent or not child:
             return
         p, c = self._node(parent), self._node(child)
-        if p == c or self.g.has_edge(c, p):  # ignore self-loops / contradictions
+        if p == c or self.g.has_edge(c, p):  # ignore self-loops / circular cycles
             return
         if self.g.has_edge(p, c):
             return
         former = None
         if self.g.in_degree(c):
-            if relation != "acquisition":      # a company keeps one parent -> stays a tree
+            if relation != "acquisition":
                 return
-            old = list(self.g.predecessors(c))   # acquisition = new owner replaces old parent
+            old = list(self.g.predecessors(c))
             former = self.display[old[0]]
             self.g.remove_edges_from([(o, c) for o in old])
         self.g.add_edge(p, c, relation=relation, source=source, pct=pct, former_parent=former)
@@ -65,10 +71,11 @@ class CompanyGraph:
                     for m in pat.finditer(s):
                         self.add(m["parent"], m["child"], rel, a["url"],
                                  pct=m.groupdict().get("pct"))
-        # completed deals also create parent -> child links
+        
+        # Completed deals also establish new parent -> subsidiary links
         for e in events:
-            if e["event_type"] in ("ACQUISITION", "HOSTILE_TAKEOVER") and e["acquirer"] and e["target"]:
-                self.add(e["acquirer"], e["target"], "acquisition", e["url"])
+            if e["event_type"] in ("ACQUISITION", "HOSTILE_TAKEOVER") and e.get("acquirer") and e.get("target"):
+                self.add(e["acquirer"], e["target"], "acquisition", e.get("url", ""))
 
     # ---------- outputs ----------
     def roots(self):
@@ -76,9 +83,17 @@ class CompanyGraph:
                       key=lambda n: -len(nx.descendants(self.g, n)))
 
     def nested(self, node):
-        return {"company": self.display[node],
-                "subsidiaries": [dict(self.nested(c), relation=self.g[node][c]["relation"])
-                                 for c in sorted(self.g.successors(node))]}
+        return {
+            "company": self.display[node],
+            "is_root": self.g.in_degree(node) == 0,
+            "subsidiaries": [
+                dict(self.nested(c),
+                     relation=self.g[node][c]["relation"],
+                     pct=self.g[node][c].get("pct"),
+                     former_parent=self.g[node][c].get("former_parent"))
+                for c in sorted(self.g.successors(node))
+            ]
+        }
 
     def to_json(self):
         return [self.nested(r) for r in self.roots()]
@@ -108,35 +123,171 @@ class CompanyGraph:
         return "\n".join(lines) if lines else "(no parent/subsidiary relations found)"
 
     def draw(self, path):
+        """
+        Renders a visually striking, executive dark-themed hierarchy diagram
+        with rounded card badges, distinct colors, and legible edge pills.
+        """
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
+        import matplotlib.patches as patches
 
         if not self.g.number_of_edges():
             return
-        depth, pos_x = {}, {}
-        for r in self.roots():
+
+        self.g.remove_nodes_from(list(nx.isolates(self.g)))
+        roots = self.roots()
+        if not roots:
+            return
+
+        # Calculate hierarchical tree layers
+        depth = {}
+        for r in roots:
             depth[r] = 0
             for n, d in nx.single_source_shortest_path_length(self.g, r).items():
                 depth[n] = max(depth.get(n, 0), d)
+
         layers = {}
         for n, d in depth.items():
             layers.setdefault(d, []).append(n)
+
+        # Distribute node coordinates cleanly across tiers
         pos = {}
+        max_layer_size = max(len(nodes) for nodes in layers.values())
+        total_width = max(14, max_layer_size * 3.4)
+        
         for d, nodes in layers.items():
+            k = len(nodes)
             for i, n in enumerate(sorted(nodes)):
-                pos[n] = ((i + 1) / (len(nodes) + 1) * 10 * max(1, len(layers[0]) / 2), -d)
-        fig, ax = plt.subplots(figsize=(max(10, 3 * len(layers[0])), 2.2 * len(layers) + 1))
-        self.g.remove_nodes_from(list(nx.isolates(self.g)))
-        pos = {n: xy for n, xy in pos.items() if n in self.g}
-        nx.draw_networkx_edges(self.g, pos, ax=ax, arrows=True, arrowsize=14, edge_color="#666")
-        nx.draw_networkx_nodes(self.g, pos, ax=ax, node_size=300, node_color="#4C78A8")
-        nx.draw_networkx_labels(self.g, pos, labels={n: self.display[n] for n in self.g}, ax=ax,
-                                font_size=8, verticalalignment="bottom")
-        ax.set_title("Company -> Subsidiary tree")
+                x = (i + 1) * (total_width / (k + 1))
+                y = -d * 2.6
+                pos[n] = (x, y)
+
+        fig_height = max(7, len(layers) * 2.8 + 2.5)
+        fig, ax = plt.subplots(figsize=(total_width, fig_height), facecolor="#0B132B")
+        ax.set_facecolor("#0B132B")
+
+        # Color palette
+        COLOR_ROOT = "#4F46E5"        # Indigo
+        COLOR_ACQ = "#D97706"         # Amber
+        COLOR_SUB = "#0D9488"         # Teal
+        EDGE_COLOR = "#64748B"        # Slate grey
+
+        # 1. Draw smooth directed edges with badges
+        for u, v, data in self.g.edges(data=True):
+            p1 = pos[u]
+            p2 = pos[v]
+            rel = data.get("relation", "subsidiary")
+            pct = data.get("pct")
+            former = data.get("former_parent")
+
+            # Determine label text
+            if pct:
+                edge_text = f"{pct}% Stake"
+            elif rel == "acquisition":
+                edge_text = "Acquired" + (f" (ex-{former[:10]})" if former else "")
+            else:
+                edge_text = "Subsidiary"
+
+            # Draw curved arrow
+            rad = 0.08 if p1[0] <= p2[0] else -0.08
+            ax.annotate(
+                "",
+                xy=(p2[0], p2[1] + 0.35),
+                xytext=(p1[0], p1[1] - 0.35),
+                arrowprops=dict(
+                    arrowstyle="->,head_width=0.4,head_length=0.6",
+                    color=EDGE_COLOR,
+                    lw=1.8,
+                    connectionstyle=f"arc3,rad={rad}",
+                    shrinkA=12,
+                    shrinkB=12
+                )
+            )
+
+            # Draw edge badge pill at midpoint
+            mx = (p1[0] + p2[0]) / 2.0
+            my = (p1[1] + p2[1]) / 2.0
+            ax.text(
+                mx, my,
+                f" {edge_text} ",
+                fontsize=7.5,
+                fontweight="medium",
+                color="#E2E8F0",
+                ha="center",
+                va="center",
+                bbox=dict(boxstyle="round,pad=0.3", fc="#1E293B", ec="#334155", lw=1.2, alpha=0.92)
+            )
+
+        # 2. Draw styled corporate node cards
+        for n, (x, y) in pos.items():
+            is_root = (self.g.in_degree(n) == 0)
+            in_edges = list(self.g.in_edges(n, data=True))
+            is_acq = any(e[2].get("relation") == "acquisition" for e in in_edges)
+
+            if is_root:
+                bg_color = COLOR_ROOT
+                role_tag = "HOLDING / PARENT"
+            elif is_acq:
+                bg_color = COLOR_ACQ
+                role_tag = "ACQUIRED SUBSIDIARY"
+            else:
+                bg_color = COLOR_SUB
+                role_tag = "OPERATING UNIT"
+
+            name = self.display[n]
+            node_label = f"{name}\n[{role_tag}]"
+
+            # Draw card box
+            ax.text(
+                x, y,
+                node_label,
+                fontsize=9 if is_root else 8.5,
+                fontweight="bold" if is_root else "semibold",
+                color="#FFFFFF",
+                ha="center",
+                va="center",
+                bbox=dict(
+                    boxstyle="round,pad=0.55,rounding_size=0.35",
+                    fc=bg_color,
+                    ec="#FFFFFF",
+                    lw=1.4 if is_root else 1.0,
+                    alpha=0.95
+                )
+            )
+
+        # Title and Header Decoration
+        ax.set_title(
+            "CORPORATE OWNERSHIP & M&A SUBSIDIARY HIERARCHY",
+            fontsize=14,
+            fontweight="bold",
+            color="#F8FAFC",
+            pad=20,
+            loc="center"
+        )
+
+        # Legend at top right
+        legend_patches = [
+            patches.Patch(color=COLOR_ROOT, label="Holding / Ultimate Parent"),
+            patches.Patch(color=COLOR_SUB, label="Operating Subsidiary"),
+            patches.Patch(color=COLOR_ACQ, label="Acquired / M&A Unit"),
+        ]
+        ax.legend(
+            handles=legend_patches,
+            loc="upper right",
+            facecolor="#1E293B",
+            edgecolor="#334155",
+            fontsize=8,
+            labelcolor="#E2E8F0"
+        )
+
+        ax.set_xlim(0, total_width)
+        y_vals = [p[1] for p in pos.values()]
+        ax.set_ylim(min(y_vals) - 1.2, max(y_vals) + 1.2)
         ax.axis("off")
+
         fig.tight_layout()
-        fig.savefig(path, dpi=140)
+        fig.savefig(path, dpi=180, facecolor=fig.get_facecolor(), edgecolor="none")
         plt.close(fig)
 
     def save(self, folder="output"):
