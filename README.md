@@ -119,7 +119,8 @@ corporate-event-miner/
 ├── Corporate_Event_Miner_Project_Report.md  # Comprehensive academic project report
 ├── README.md                               # Project documentation (this file)
 ├── requirements.txt                        # Python dependencies
-├── main.py                                 # Main execution pipeline
+├── app.py                                  # Interactive Web Dashboard Application Server
+├── main.py                                 # Main execution pipeline (supports --serve)
 ├── data/
 │   ├── sample_articles.json                # Bundled offline benchmark articles
 │   └── training_data.csv                   # Multi-class training dataset (7 classes)
@@ -157,12 +158,28 @@ cd corporate-event-miner
 pip install -r requirements.txt
 ```
 
-### 3. Run the Pipeline
-
-#### Option A: Offline Sample Mode (Instant Demo)
-Runs on bundled benchmark articles, prints enriched details to the console, and generates the dashboard:
+### 3. Run the Whole Project from the Interactive Dashboard (Recommended!)
+Launch the interactive web application server which automatically opens your browser:
 ```bash
-python main.py --mode sample
+python app.py
+# or
+python main.py --serve
+```
+*Inside the web dashboard, you can click **"⚡ Run Pipeline Live"** to trigger execution (Sample Mode, Live Web Feeds, or Classifier Retraining) right from the UI and watch the execution logs stream in real time!*
+
+#### Alternative CLI Execution Options:
+- **Offline Sample Benchmark:**
+  ```bash
+  python main.py --mode sample
+  ```
+- **Live News Crawler:**
+  ```bash
+  python main.py --mode live --per-feed 5
+  ```
+- **Retrain Classifier:**
+  ```bash
+  python main.py --mode sample --retrain
+  ```
 ```
 
 #### Option B: Live Web Crawling Mode

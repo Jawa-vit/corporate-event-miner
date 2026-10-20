@@ -33,7 +33,14 @@ def main():
     ap.add_argument("--mode", choices=["sample", "live"], default="sample")
     ap.add_argument("--per-feed", type=int, default=10)
     ap.add_argument("--retrain", action="store_true", help="retrain classifier")
+    ap.add_argument("--serve", action="store_true", help="launch interactive dashboard web app")
     args = ap.parse_args()
+
+    if args.serve:
+        import app as dashboard_app
+        dashboard_app.start_server()
+        return
+
     os.makedirs(OUT, exist_ok=True)
 
     # (a) crawl

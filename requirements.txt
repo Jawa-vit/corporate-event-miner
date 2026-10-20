@@ -5,3 +5,4 @@ scikit-learn
 networkx
 matplotlib
 joblib
+flask
